@@ -5,14 +5,15 @@
   @include bg_covertint ($r_blanco,$g_blanco,$b_blanco,$r_light_blue,$g_light_blue,$b_light_blue,$alpha_cover,$picture-contactos);
   height: 100vh;
   color: $blanco;
-  text-align: center;
-  h1{
-      margin-top:0;
-  }
-  p{
-      margin-left: 10%;
-      margin-right: 10%;
-  }
+}
+.content {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+    h1{
+        @include headers;
+    }
+  background-size: cover;
 }
 
 .topnav {
