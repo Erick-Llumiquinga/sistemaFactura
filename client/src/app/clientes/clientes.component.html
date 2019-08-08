@@ -8,40 +8,44 @@
         <img src="../../assets/home-img.png" alt="home-img" height="64" width="64">
     </a>
 </div>
-    
+
 <!-- TABLA CLIENTE -->
-<div class="table-wrapper">
-    <h1>CLIENTES</h1>
-    <table class="fl-table">
-        <thead *ngFor="let item of table_header">
-            <th>{{item.id}}</th>
-            <th>{{item.identificacion}}</th>
-            <th>{{item.nombre}}</th>
-            <th>{{item.apellido}}</th>
-            <th>{{item.direccion}}</th>
-            <th></th>
-        </thead>
-    
-        <tbody>
-            <tr *ngFor="let item of respuestaClientes">
-                <td>{{ item.id }}</td>
-                <td>{{ item.identificacion }}</td>
-                <td>{{ item.nombre }}</td>
-                <td>{{ item.apellido }}</td>
-                <td>{{ item.direccion }}</td>
-                <td>
-                    <a type="button" (click)="deleteDataTable(item.id)">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <img src="../../../assets/delete-img.png" alt="delete-img" height="18" width="18">
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<section>
+    <div class="table-wrapper">
+        <h1>CLIENTE</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead *ngFor="let item of table_header">
+                    <th>{{item.id}}</th>
+                    <th>{{item.identificacion}}</th>
+                    <th>{{item.nombre}}</th>
+                    <th>{{item.apellido}}</th>
+                    <th>{{item.direccion}}</th>
+                    <th></th>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let item of respuestaClientes">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.identificacion }}</td>
+                        <td>{{ item.nombre }}</td>
+                        <td>{{ item.apellido }}</td>
+                        <td>{{ item.direccion }}</td>
+                        <td>
+                            <a type="button" (click)="deleteDataTable(item.id)">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <img src="../../../assets/delete-img.png" alt="delete-img" height="18" width="18">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
 <!-- TABLA CLIENTE -->
 
 <!-- MODAL CLIENTE -->
@@ -52,7 +56,7 @@
                 <span onclick="document.getElementById('id04').style.display='none'" class="w3-display-topright">&times;</span>
                 <!-- <h2>Registro Proveedor</h2> -->
             </header>
-        
+
             <div>
                 <h1>Nuevo Cliente</h1>
                 <form [formGroup]="clienteForm" autocomplete="off">

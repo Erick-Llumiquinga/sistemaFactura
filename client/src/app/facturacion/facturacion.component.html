@@ -10,38 +10,47 @@
 </div>
 
 <!-- TABLA FACTURACIÓN -->
-<div class="table-wrapper">
-    <h1>FACTURACIÓN</h1>
-    <table class="fl-table">
-        <thead *ngFor="let item of table_header">
-            <th>{{item.id}}</th>
-            <th>{{item.idcliente}}</th>
-            <th>{{item.fecha}}</th>
-            <th>{{item.total}}</th>
-            <th>{{item.idCliente}}</th>
-            <th></th>
-        </thead>
+<section>
+    <div class="table-wrapper">
+        <h1>FACTURACIÓN</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead *ngFor="let item of table_header">
+                    <th>{{item.id}}</th>
+                    <th>{{item.idcliente}}</th>
+                    <th>{{item.fecha}}</th>
+                    <th>{{item.total}}</th>
+                    <th>{{item.idCliente}}</th>
+                    <th></th>
+                </thead>
 
-        <tbody>
-            <tr *ngFor="let item of respuestaFacturas">
-                <td>{{ item.id }}</td>
-                <td>{{ item.idcliente }}</td>
-                <td>{{ item.fecha }}</td>
-                <td>{{ item.total }}</td>
-                <td>
-                    <a type="button" onclick="document.getElementById('id05').style.display='block'" (click)="getDatabyID(item.id)">
-                        <img src="../../assets/edit-img.png" alt="edit-img" height="18" width="18">
-                    </a>
-                    <a type="button" href="/resumen_facturacion" (click)="getDatabyID(item.id)">
-                        <img src="../../assets/details.ico" alt="details-img" height="18" width="18">
-                    </a>
-                    <a type="button" (click)="deleteDataTable(item.id)">
-                        <img src="../../assets/delete-img.png" alt="delete-img" height="18" width="18">
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                <tbody>
+                    <tr *ngFor="let item of respuestaFacturas">
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.idcliente }}</td>
+                        <td>{{ item.fecha }}</td>
+                        <td>{{ item.total }}</td>
+                        <td>
+                            <a type="button" onclick="document.getElementById('id05').style.display='block'" (click)="getDatabyID(item.id)">
+                                <img src="../../assets/edit-img.png" alt="edit-img" height="27" width="27">
+                            </a>
+                            <a type="button" href="/resumen_facturacion" (click)="getDatabyID(item.id)">
+                                <img src="../../assets/details.png" alt="details-img" height="27" width="27">
+                            </a>
+                            <a type="button" (click)="deleteDataTable(item.id)">
+                                <img src="../../assets/delete-img.png" alt="delete-img" height="27" width="27">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<div class="made-with-love">
+    FACTURACIÓN
+    <i>♥</i>
+    <a target="_blank" href="#">By: Richard</a>
 </div>
 <!-- TABLA FACTURACIÓN -->
 
@@ -137,3 +146,258 @@
     </a>
 </div>
 <!-- MODAL DETALLE_FACTURA -->
+<!-- <section> -->
+<!--for demo wrap-->
+<!-- <h1>Fixed Table header</h1>
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Company</th>
+                    <th>Price</th>
+                    <th>Change</th>
+                    <th>Change %</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+                <tr>
+                    <td>AAC</td>
+                    <td>AUSTRALIAN COMPANY </td>
+                    <td>$1.38</td>
+                    <td>+2.01</td>
+                    <td>-0.36%</td>
+                </tr>
+                <tr>
+                    <td>AAD</td>
+                    <td>AUSENCO</td>
+                    <td>$2.38</td>
+                    <td>-0.01</td>
+                    <td>-1.36%</td>
+                </tr>
+                <tr>
+                    <td>AAX</td>
+                    <td>ADELAIDE</td>
+                    <td>$3.22</td>
+                    <td>+0.01</td>
+                    <td>+1.36%</td>
+                </tr>
+                <tr>
+                    <td>XXD</td>
+                    <td>ADITYA BIRLA</td>
+                    <td>$1.02</td>
+                    <td>-1.01</td>
+                    <td>+2.36%</td>
+                </tr>
+                <tr>
+                    <td>AAC</td>
+                    <td>AUSTRALIAN COMPANY </td>
+                    <td>$1.38</td>
+                    <td>+2.01</td>
+                    <td>-0.36%</td>
+                </tr>
+                <tr>
+                    <td>AAD</td>
+                    <td>AUSENCO</td>
+                    <td>$2.38</td>
+                    <td>-0.01</td>
+                    <td>-1.36%</td>
+                </tr>
+                <tr>
+                    <td>AAX</td>
+                    <td>ADELAIDE</td>
+                    <td>$3.22</td>
+                    <td>+0.01</td>
+                    <td>+1.36%</td>
+                </tr>
+                <tr>
+                    <td>XXD</td>
+                    <td>ADITYA BIRLA</td>
+                    <td>$1.02</td>
+                    <td>-1.01</td>
+                    <td>+2.36%</td>
+                </tr>
+                <tr>
+                    <td>AAC</td>
+                    <td>AUSTRALIAN COMPANY </td>
+                    <td>$1.38</td>
+                    <td>+2.01</td>
+                    <td>-0.36%</td>
+                </tr>
+                <tr>
+                    <td>AAD</td>
+                    <td>AUSENCO</td>
+                    <td>$2.38</td>
+                    <td>-0.01</td>
+                    <td>-1.36%</td>
+                </tr>
+                <tr>
+                    <td>AAX</td>
+                    <td>ADELAIDE</td>
+                    <td>$3.22</td>
+                    <td>+0.01</td>
+                    <td>+1.36%</td>
+                </tr>
+                <tr>
+                    <td>XXD</td>
+                    <td>ADITYA BIRLA</td>
+                    <td>$1.02</td>
+                    <td>-1.01</td>
+                    <td>+2.36%</td>
+                </tr>
+                <tr>
+                    <td>AAC</td>
+                    <td>AUSTRALIAN COMPANY </td>
+                    <td>$1.38</td>
+                    <td>+2.01</td>
+                    <td>-0.36%</td>
+                </tr>
+                <tr>
+                    <td>AAD</td>
+                    <td>AUSENCO</td>
+                    <td>$2.38</td>
+                    <td>-0.01</td>
+                    <td>-1.36%</td>
+                </tr>
+                <tr>
+                    <td>AAX</td>
+                    <td>ADELAIDE</td>
+                    <td>$3.22</td>
+                    <td>+0.01</td>
+                    <td>+1.36%</td>
+                </tr>
+                <tr>
+                    <td>XXD</td>
+                    <td>ADITYA BIRLA</td>
+                    <td>$1.02</td>
+                    <td>-1.01</td>
+                    <td>+2.36%</td>
+                </tr>
+                <tr>
+                    <td>AAC</td>
+                    <td>AUSTRALIAN COMPANY </td>
+                    <td>$1.38</td>
+                    <td>+2.01</td>
+                    <td>-0.36%</td>
+                </tr>
+                <tr>
+                    <td>AAD</td>
+                    <td>AUSENCO</td>
+                    <td>$2.38</td>
+                    <td>-0.01</td>
+                    <td>-1.36%</td>
+                </tr>
+                <tr>
+                    <td>AAX</td>
+                    <td>ADELAIDE</td>
+                    <td>$3.22</td>
+                    <td>+0.01</td>
+                    <td>+1.36%</td>
+                </tr>
+                <tr>
+                    <td>XXD</td>
+                    <td>ADITYA BIRLA</td>
+                    <td>$1.02</td>
+                    <td>-1.01</td>
+                    <td>+2.36%</td>
+                </tr>
+                <tr>
+                    <td>AAC</td>
+                    <td>AUSTRALIAN COMPANY </td>
+                    <td>$1.38</td>
+                    <td>+2.01</td>
+                    <td>-0.36%</td>
+                </tr>
+                <tr>
+                    <td>AAD</td>
+                    <td>AUSENCO</td>
+                    <td>$2.38</td>
+                    <td>-0.01</td>
+                    <td>-1.36%</td>
+                </tr>
+                <tr>
+                    <td>AAX</td>
+                    <td>ADELAIDE</td>
+                    <td>$3.22</td>
+                    <td>+0.01</td>
+                    <td>+1.36%</td>
+                </tr>
+                <tr>
+                    <td>XXD</td>
+                    <td>ADITYA BIRLA</td>
+                    <td>$1.02</td>
+                    <td>-1.01</td>
+                    <td>+2.36%</td>
+                </tr>
+                <tr>
+                    <td>AAC</td>
+                    <td>AUSTRALIAN COMPANY </td>
+                    <td>$1.38</td>
+                    <td>+2.01</td>
+                    <td>-0.36%</td>
+                </tr>
+                <tr>
+                    <td>AAD</td>
+                    <td>AUSENCO</td>
+                    <td>$2.38</td>
+                    <td>-0.01</td>
+                    <td>-1.36%</td>
+                </tr>
+                <tr>
+                    <td>AAX</td>
+                    <td>ADELAIDE</td>
+                    <td>$3.22</td>
+                    <td>+0.01</td>
+                    <td>+1.36%</td>
+                </tr>
+                <tr>
+                    <td>XXD</td>
+                    <td>ADITYA BIRLA</td>
+                    <td>$1.02</td>
+                    <td>-1.01</td>
+                    <td>+2.36%</td>
+                </tr>
+                <tr>
+                    <td>AAC</td>
+                    <td>AUSTRALIAN COMPANY </td>
+                    <td>$1.38</td>
+                    <td>+2.01</td>
+                    <td>-0.36%</td>
+                </tr>
+                <tr>
+                    <td>AAD</td>
+                    <td>AUSENCO</td>
+                    <td>$2.38</td>
+                    <td>-0.01</td>
+                    <td>-1.36%</td>
+                </tr>
+                <tr>
+                    <td>AAX</td>
+                    <td>ADELAIDE</td>
+                    <td>$3.22</td>
+                    <td>+0.01</td>
+                    <td>+1.36%</td>
+                </tr>
+                <tr>
+                    <td>XXD</td>
+                    <td>ADITYA BIRLA</td>
+                    <td>$1.02</td>
+                    <td>-1.01</td>
+                    <td>+2.36%</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section> -->
+
+
+<!-- 
+<div class="made-with-love">
+    Made with
+    <i>♥</i> by
+    <a target="_blank" href="https://codepen.io/nikhil8krishnan">Nikhil Krishnan</a>
+</div> -->
