@@ -43,6 +43,10 @@
 .topnav .icon {
   display: none;
 }
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color:$brand-secondary;
+  color: white;
+}
 
 .dropdown {
   float: left;
