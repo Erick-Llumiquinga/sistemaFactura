@@ -4,7 +4,7 @@
     </a>
 </div>
 <div class="backHome">
-    <a type="button" routerLink="/home">
+    <a type="button" routerLink="/dashboard">
         <img src="../../assets/home.png" alt="home-img" height="64" width="64">
     </a>
 </div>
@@ -35,7 +35,7 @@
                                 <span></span>
                                 <span></span>
                                 <span></span>
-                                <img src="../../assets/edit-img.png" alt="edit-img" height="18" width="18">
+                                <img src="../../assets/editar.png" alt="edit-img" height="18" width="18">
                             </a>
                             <a type="button" href="/resumen_albaran" (click)="getDatabyID(item.id)">
                                 <span></span>
@@ -109,17 +109,18 @@
                 <form [formGroup]="detallealbaranForm" autocomplete="off">
                     <strong>ALBARÁN</strong><br>
                     <select formControlName="idalbaran">
-                            <option *ngFor="let item of respuestaMateriales" value={{item.id}}>{{item.id}}</option>
+                            <option *ngFor="let item of respuestaAlbaran" value={{item.id}}>{{item.id}}--{{item.fecha_entrega}}</option>
                         </select>
                     <div>
                         <span class="errors" *ngIf="detallealbaranForm.controls['idalbaran'].errors?.required">Obligatorio</span>
                     </div><br>
 
                     <strong>MATERIAL</strong><br>
-                    <input formControlName="idmaterial">
+                    <select formControlName="idmaterial">
+                        <option *ngFor="let item of respuestaMaterial" value={{item.id}}>{{item.nombre}}</option>
+                    </select>
                     <div>
                         <span class="errors" *ngIf="detallealbaranForm.controls['idmaterial'].errors?.required">Obligatorio</span>
-                        <!-- <span class="errors" *ngIf="detallepedidosForm.controls['nombre'].errors?.pattern">Inválido</span> -->
                     </div><br>
 
                     <strong>CANTIDAD</strong><br>

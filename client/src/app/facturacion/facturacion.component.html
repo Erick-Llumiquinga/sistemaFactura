@@ -4,7 +4,7 @@
     </a>
 </div>
 <div class="backHome">
-    <a type="button" routerLink="/home">
+    <a type="button" routerLink="/dashboard">
         <img src="../../assets/home.png" alt="home-img" height="64" width="64">
     </a>
 </div>
@@ -32,10 +32,10 @@
                         <td>{{ item.total }}</td>
                         <td>
                             <a type="button" onclick="document.getElementById('id05').style.display='block'" (click)="getDatabyID(item.id)">
-                                <img src="../../assets/edit-img.png" alt="edit-img" height="27" width="27">
+                                <img src="../../assets/editar.png" alt="edit-img" height="27" width="27">
                             </a>
                             <a type="button" href="/resumen_facturacion" (click)="getDatabyID(item.id)">
-                                <img src="../../assets/details.png" alt="details-img" height="27" width="27">
+                                <img src="../../assets/details.ico" alt="details-img" height="27" width="27">
                             </a>
                             <a type="button" (click)="deleteDataTable(item.id)">
                                 <img src="../../assets/delete-img.png" alt="delete-img" height="27" width="27">
