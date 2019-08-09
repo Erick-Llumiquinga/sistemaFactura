@@ -66,7 +66,6 @@
         <div class="w3-modal-content">
             <header>
                 <span onclick="document.getElementById('id04').style.display='none'" class="w3-display-topright">&times;</span>
-                <!-- <h2>Registro Cliente</h2> -->
             </header>
 
             <div>
@@ -101,7 +100,6 @@
         <div class="w3-modal-content">
             <header>
                 <span onclick="document.getElementById('id05').style.display='none'" class="w3-display-topright">&times;</span>
-                <!-- <h2>Registro Cliente</h2> -->
             </header>
 
             <div>
@@ -127,14 +125,12 @@
                     <input formControlName="cantidad">
                     <div>
                         <span class="errors" *ngIf="detallealbaranForm.controls['cantidad'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="detallepedidosForm.controls['cantidad'].errors?.pattern"> Inválido </span> -->
                     </div><br>
 
                     <strong>PRECIO</strong><br>
                     <input formControlName="precio">
                     <div>
                         <span class="errors" *ngIf="detallealbaranForm.controls['precio'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="detallepedidosForm.controls['precio'].errors?.pattern"> Inválido </span> -->
                     </div><br><br>
 
                     <a type="button" (click)="postDataDetalleAlbaran()">
@@ -148,4 +144,4 @@
         </div>
     </div>
 </div>
-<!-- MODAL DETALLE_PEDIDOS -->
+<!-- MODAL DETALLE-ALBARAN-->
