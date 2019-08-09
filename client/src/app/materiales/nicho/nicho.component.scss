@@ -1,5 +1,5 @@
-@import '../../scss/variables';
-@import '../../scss/mixins';
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
 header {
     position: relative;
     display: block;
@@ -94,7 +94,7 @@ h1 {
 
 table {
     width: 100%;
-    table-layout: relative;
+    table-layout: fixed;
 }
 
 .tbl-header {

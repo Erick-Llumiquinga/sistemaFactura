@@ -1,11 +1,11 @@
 ;
 let initVar = () => {
-    process.env.PORT = process.env.PORT || 8001
+    process.env.PORT = process.env.PORT || 3001
     process.env.CLIENT = process.env.CLIENT || 'pg'
     process.env.CONNECTION_DB = process.env.CONNECTION_DB || {
         host: '127.0.0.1',
-        user: 'postgres',
-        password: 'lenin1234',
+        user: 'jarojas',
+        password: 'juan123',
         database: 'Ferre'
     }
 }

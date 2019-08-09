@@ -20,8 +20,8 @@ export class AlbaranComponent implements OnInit {
     this.formularioAlbaran()
     this.formularioDetalleAlbaran()
     this.getDataAlbaran()
-    this.getDataPedidos()
-    this.getDataMateriales()
+    this.getDataMaterial()
+
 
     this.table_header = [
       {
@@ -85,43 +85,6 @@ export class AlbaranComponent implements OnInit {
 
 
   //MODAL NEW ALBARAN
-  respuestaPedidos: any[]
-
-  getDataPedidos = () => {
-    let tabla = 'pedido'
-    this.http.get<any>(environment.API_URL + `?tabla=${tabla}`)
-    .subscribe(data => {
-      this.respuestaPedidos = data.datos
-    })
-  }
-  
-  nuevafecha = new Date()
-  fecha_orden = this.nuevafecha.getDate() + "/" + (this.nuevafecha.getMonth() +1) + "/" + this.nuevafecha.getFullYear()
-
-  postDataAlbaran = () => {
-    let idpedido = this.albaranForm.get('idpedido').value
-    let total = this.albaranForm.get('total').value
-
-    let tabla = 'albaran'
-    let register = {tabla: tabla, datos: [{idpedido: idpedido, fecha_entrega: this.fecha_orden, total: total}]}
-    this.http.post(environment.API_URL, register)
-    .subscribe( data => {
-      // this.postData = data
-    })
-    window.location.reload()
-  }
-  //MODAL NEW PEDIDO
-
-  //MODAL DETALLE PEDIDO 
-  respuestaMateriales: any[]
-
-  getDataMateriales = () => {
-    let tabla = 'material'
-    this.http.get<any>(environment.API_URL + `?tabla=${tabla}`)
-    .subscribe(data => {
-        this.respuestaMateriales = data.datos
-    })
-  }
   
   postDataDetalleAlbaran = () => {
     let idalbaran = this.detallealbaranForm.get('idalbaran').value
@@ -137,4 +100,16 @@ export class AlbaranComponent implements OnInit {
     })
     window.location.reload()
   }
+  //MODAL NEW ALBARAN
+
+  //MODAL DETALLE ALBARAN
+  respuestaMaterial: any[]
+
+  getDataMaterial = () => {
+    let tabla = 'material'
+    this.http.get<any>(environment.API_URL + `?tabla=${tabla}`)
+    .subscribe(data => {
+      this.respuestaMaterial = data.datos
+    })
+  }  
 }

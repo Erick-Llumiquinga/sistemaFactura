@@ -12,11 +12,12 @@ import { FacturacionComponent } from './facturacion/facturacion.component';
 import { AlbaranComponent } from './albaran/albaran.component';
 import { ResumenAlbaranComponent } from './albaran/resumen-albaran/resumen-albaran.component';
 import { ResumenFacturacionComponent } from './facturacion/resumen-facturacion/resumen-facturacion.component';
+import { NichoComponent } from './materiales/nicho/nicho.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: 'dashboard', component: HomeComponent },
   { path: 'pedidos', component: PedidosComponent },
   { path: 'reclamos', component: ReclamosComponent },
   { path: 'resumen_pedidos', component: ResumenPedidoComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'materiales', component: MaterialesComponent},
   { path: 'albaran', component: AlbaranComponent},
   { path: 'resumen_albaran', component: ResumenAlbaranComponent},
+  { path: 'nicho', component: NichoComponent}
 ];
   @NgModule({
   imports: [RouterModule.forRoot(routes)],

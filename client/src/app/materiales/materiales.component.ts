@@ -26,9 +26,9 @@ export class MaterialesComponent implements OnInit {
       {
         id: 'N°',
         nombre: 'Nombre',
-        descripcion: 'Descripcion',
-        fecha_registro: 'Fecha de Ingreso',
-        fecha_actualizacion: 'Fecha de Actualizacion',
+        descripcion: 'Descripción',
+        fecha_registro: 'Ingreso',
+        fecha_actualizacion: 'Actualización',
         precio: 'Costo',
         idNicho: 'Almacenamiento',
         idProveedor: 'Proveedor'

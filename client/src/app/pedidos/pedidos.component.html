@@ -8,7 +8,7 @@
     </a>
 </div>
 <div class="backHome">
-    <a type="button" routerLink="/home">
+    <a type="button" routerLink="/dashboard">
         <span></span>
         <span></span>
         <span></span>
@@ -52,7 +52,7 @@
                                 <span></span>
                                 <span></span>
                                 <span></span>
-                                <img src="../../assets/edit-img.png" alt="edit-img" height="18" width="18">
+                                <img src="../../assets/editar.png" alt="edit-img" height="18" width="18">
                             </a>
                             <a type="button" href="/resumen_pedidos" (click)="getDatabyID(item.id)">
                                 <span></span>
@@ -85,7 +85,6 @@
                 <span onclick="document.getElementById('id04').style.display='none'" class="w3-display-topright">
                     <img src="../../assets/close-img.png" alt="edit-img" height="18" width="18">
                 </span>
-                <!-- <h2>Registro Cliente</h2> -->
             </header>
 
             <div>
@@ -127,7 +126,6 @@
                 <span onclick="document.getElementById('id05').style.display='none'" class="w3-display-topright">
                     <img src="../../assets/close-img.png" alt="edit-img" height="18" width="18">
                 </span>
-                <!-- <h2>Registro Cliente</h2> -->
             </header>
 
             <div>
@@ -145,21 +143,18 @@
                     <input formControlName="nombre">
                     <div>
                         <span class="errors" *ngIf="detallepedidosForm.controls['nombre'].errors?.required">Obligatorio</span>
-                        <!-- <span class="errors" *ngIf="detallepedidosForm.controls['nombre'].errors?.pattern">Inválido</span> -->
                     </div><br>
 
                     <strong>CANTIDAD</strong><br>
                     <input formControlName="cantidad">
                     <div>
                         <span class="errors" *ngIf="detallepedidosForm.controls['cantidad'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="detallepedidosForm.controls['cantidad'].errors?.pattern"> Inválido </span> -->
                     </div><br>
 
                     <strong>PRECIO</strong><br>
                     <input formControlName="precio">
                     <div>
                         <span class="errors" *ngIf="detallepedidosForm.controls['precio'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="detallepedidosForm.controls['precio'].errors?.pattern"> Inválido </span> -->
                     </div><br><br>
 
                     <a type="button" (click)="postDataDetallePedidos()">

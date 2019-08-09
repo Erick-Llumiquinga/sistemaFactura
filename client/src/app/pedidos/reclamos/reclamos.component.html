@@ -8,7 +8,7 @@
     </a>
 </div>
 <div class="backHome">
-    <a type="button" routerLink="/home">
+    <a type="button" routerLink="/dashboard">
         <span></span>
         <span></span>
         <span></span>
@@ -29,7 +29,7 @@
 <!-- TABLA RECLAMOS -->
 <section>
     <div class="table-wrapper">
-        <h1>PEDIDOS</h1>
+        <h1>RECLAMOS</h1>
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0">
                 <thead *ngFor="let item of table_header">
@@ -50,7 +50,7 @@
                                 <span></span>
                                 <span></span>
                                 <span></span>
-                                <img src="../../../assets/edit-img.png" alt="edit-img" height="18" width="18">
+                                <img src="../../../assets/editar.png" alt="edit-img" height="18" width="18">
                             </a>
                             <a type="button" href="/resumen_reclamos" (click)="getDatabyID(item.id)">
                                 <span></span>
@@ -81,7 +81,6 @@
         <div class="w3-modal-content">
             <header>
                 <span onclick="document.getElementById('id04').style.display='none'" class="w3-display-topright">&times;</span>
-                <!-- <h2>Registro Reclamo</h2> -->
             </header>
 
             <div>
@@ -112,7 +111,6 @@
         <div class="w3-modal-content">
             <header>
                 <span onclick="document.getElementById('id05').style.display='none'" class="w3-display-topright">&times;</span>
-                <!-- <h2>Registro Reclamo</h2> -->
             </header>
 
             <div>

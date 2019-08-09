@@ -1,36 +1,49 @@
-<div class="newCliente">
+<div class="newReclamo">
     <a type="button" onclick="document.getElementById('id04').style.display='block'">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <img src="../../assets/nuevo.png" alt="new-img" height="64" width="64">
     </a>
 </div>
 <div class="backHome">
     <a type="button" routerLink="/dashboard">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
         <img src="../../assets/home.png" alt="home-img" height="64" width="64">
     </a>
 </div>
+<div class="levelDown">
+    <a type="button" routerLink="/materiales">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <img src="../../assets/back-img.png" alt="home-img" height="64" width="64">
+    </a>
+</div>
 
-<!-- TABLA CLIENTE -->
+<!-- TABLA NICHO -->
 <section>
     <div class="table-wrapper">
-        <h1>CLIENTES</h1>
+        <h1>NICHOS</h1>
         <div class="tbl-header">
             <table cellpadding="0" cellspacing="0" border="0">
                 <thead *ngFor="let item of table_header">
                     <th>{{item.id}}</th>
-                    <th>{{item.identificacion}}</th>
                     <th>{{item.nombre}}</th>
-                    <th>{{item.apellido}}</th>
-                    <th>{{item.direccion}}</th>
+                    <th>{{item.ubicacion}}</th>
                     <th></th>
                 </thead>
 
                 <tbody>
-                    <tr *ngFor="let item of respuestaClientes">
+                    <tr *ngFor="let item of respuestaNicho">
                         <td>{{ item.id }}</td>
-                        <td>{{ item.identificacion }}</td>
                         <td>{{ item.nombre }}</td>
-                        <td>{{ item.apellido }}</td>
-                        <td>{{ item.direccion }}</td>
+                        <td>{{item.idubicacion}}</td>
                         <td>
                             <a type="button" (click)="deleteDataTable(item.id)">
                                 <span></span>
@@ -46,9 +59,9 @@
         </div>
     </div>
 </section>
-<!-- TABLA CLIENTE -->
+<!-- TABLA NICHO -->
 
-<!-- MODAL CLIENTE -->
+<!-- MODAL NICHO -->
 <div>
     <div id="id04" class="w3-modal">
         <div class="w3-modal-content">
@@ -57,36 +70,30 @@
             </header>
 
             <div>
-                <h1>Nuevo Cliente</h1>
-                <form [formGroup]="clienteForm" autocomplete="off">
-                    <strong>Identificación</strong><br>
-                    <input formControlName="identificacion">
-                    <div>
-                        <span class="errors" *ngIf="clienteForm.controls['identificacion'].errors?.required"> Obligatorio </span>
-                    </div><br>
-
-                    <strong>Nombre</strong><br>
+                <h1>Nuevo Nicho</h1>
+                <form [formGroup]="nichoForm" autocomplete="off">
+                    <strong>Nombre del Nicho</strong><br>
                     <input formControlName="nombre">
                     <div>
-                        <span class="errors" *ngIf="clienteForm.controls['nombre'].errors?.required"> Obligatorio </span>
-                    </div><br>
-
-                    <strong>Apellido</strong><br>
-                    <input formControlName="apellido">
+                        <span class="errors" *ngIf="nichoForm.controls['nombre'].errors?.required"> Obligatorio </span>
+                        <span class="errors" *ngIf="nichoForm.controls['nombre'].errors?.pattern"> Inválido </span>
+                    </div><br><br>
+                    <strong>Ubicación</strong><br>
+                    <select formControlName="idubicacion">
+                        <option *ngFor="let item of respuestaUbicacion" value={{item.id}}>{{item.nombre}}</option>
+                    </select>
                     <div>
-                        <span class="errors" *ngIf="clienteForm.controls['apellido'].errors?.required"> Obligatorio </span>
+                        <span class="errors" *ngIf="nichoForm.controls['idubicacion'].errors?.required">Obligatorio</span>
                     </div><br>
-
-                    <strong>Dirección</strong><br>
-                    <input formControlName="direccion">
-                    <div>
-                        <span class="errors" *ngIf="clienteForm.controls['direccion'].errors?.required"> Obligatorio </span>
-                    </div><br>
-
-                    <a type="button" (click)="postDataCliente()">Guardar</a>
+                    <a type="button" (click)="postDataNicho()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span> Guardar
+                    </a>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<!-- MODAL CLIENTE -->
+<!-- MODAL NICHO -->

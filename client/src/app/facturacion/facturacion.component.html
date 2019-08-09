@@ -4,7 +4,7 @@
     </a>
 </div>
 <div class="backHome">
-    <a type="button" routerLink="/home">
+    <a type="button" routerLink="/dashboard">
         <img src="../../assets/home.png" alt="home-img" height="64" width="64">
     </a>
 </div>
@@ -32,10 +32,10 @@
                         <td>{{ item.total }}</td>
                         <td>
                             <a type="button" onclick="document.getElementById('id05').style.display='block'" (click)="getDatabyID(item.id)">
-                                <img src="../../assets/edit-img.png" alt="edit-img" height="27" width="27">
+                                <img src="../../assets/editar.png" alt="edit-img" height="27" width="27">
                             </a>
                             <a type="button" href="/resumen_facturacion" (click)="getDatabyID(item.id)">
-                                <img src="../../assets/details.png" alt="details-img" height="27" width="27">
+                                <img src="../../assets/details.ico" alt="details-img" height="27" width="27">
                             </a>
                             <a type="button" (click)="deleteDataTable(item.id)">
                                 <img src="../../assets/delete-img.png" alt="delete-img" height="27" width="27">
@@ -60,7 +60,6 @@
         <div class="w3-modal-content">
             <header>
                 <span onclick="document.getElementById('id04').style.display='none'" class="w3-display-topright">&times;</span>
-                <!-- <h2>Registro Cliente</h2> -->
             </header>
 
             <div>
@@ -78,7 +77,6 @@
                     <input formControlName="total">
                     <div>
                         <span class="errors" *ngIf="facturaForm.controls['total'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="facturaForm.controls['total'].errors?.pattern"> Inválido </span> -->
                     </div><br><br>
 
                     <a type="button" (click)="postDataFactura()">Guardar</a>
@@ -97,7 +95,6 @@
                 <span onclick="document.getElementById('id05').style.display='none'" class="w3-display-topright">
                     <img src="../../assets/close-img.png" alt="edit-img" height="18" width="18">
                 </span>
-                <!-- <h2>Registro Cliente</h2> -->
             </header>
 
             <div>
@@ -115,21 +112,18 @@
                     <input formControlName="descuento">
                     <div>
                         <span class="errors" *ngIf="detallefacturaForm.controls['descuento'].errors?.required">Obligatorio</span>
-                        <!-- <span class="errors" *ngIf="detallepedidosForm.controls['nombre'].errors?.pattern">Inválido</span> -->
                     </div><br>
 
                     <strong>CANTIDAD</strong><br>
                     <input formControlName="cantidad">
                     <div>
                         <span class="errors" *ngIf="detallefacturaForm.controls['cantidad'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="detallepedidosForm.controls['cantidad'].errors?.pattern"> Inválido </span> -->
                     </div><br>
 
                     <strong>PRECIO</strong><br>
                     <input formControlName="precio">
                     <div>
                         <span class="errors" *ngIf="detallefacturaForm.controls['precio'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="detallepedidosForm.controls['precio'].errors?.pattern"> Inválido </span> -->
                     </div><br><br>
 
                     <a type="button" (click)="postDataDetalleFacturas()">
