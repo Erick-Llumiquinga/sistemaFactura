@@ -54,7 +54,6 @@
         <div class="w3-modal-content">
             <header>
                 <span onclick="document.getElementById('id04').style.display='none'" class="w3-display-topright">&times;</span>
-                <!-- <h2>Registro Proveedor</h2> -->
             </header>
 
             <div>
@@ -64,28 +63,24 @@
                     <input formControlName="identificacion">
                     <div>
                         <span class="errors" *ngIf="proveedorForm.controls['identificacion'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="proveedorForm.controls['identificacion'].errors?.pattern"> Inválido </span> -->
                     </div><br>
 
                     <strong>Nombre</strong><br>
                     <input formControlName="nombre">
                     <div>
                         <span class="errors" *ngIf="proveedorForm.controls['nombre'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="proveedorForm.controls['identificacion'].errors?.pattern"> Inválido </span> -->
                     </div><br>
 
                     <strong>Dirección</strong><br>
                     <input formControlName="direccion">
                     <div>
                         <span class="errors" *ngIf="proveedorForm.controls['direccion'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="proveedorForm.controls['identificacion'].errors?.pattern"> Inválido </span> -->
                     </div><br>
 
                     <strong>Teléfono</strong><br>
                     <input formControlName="telefono">
                     <div>
                         <span class="errors" *ngIf="proveedorForm.controls['telefono'].errors?.required"> Obligatorio </span>
-                        <!-- <span class="errors" *ngIf="proveedorForm.controls['identificacion'].errors?.pattern"> Inválido </span> -->
                     </div><br>
 
                     <a type="button" (click)="postDataProveedor()">Guardar</a>
