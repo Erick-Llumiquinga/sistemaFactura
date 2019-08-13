@@ -122,6 +122,7 @@
 
                     <strong>PRECIO</strong><br>
                     <input formControlName="precio">
+                    <label>{{precio}}</label>
                     <div>
                         <span class="errors" *ngIf="detallefacturaForm.controls['precio'].errors?.required"> Obligatorio </span>
                     </div><br><br>
@@ -135,7 +136,5 @@
     </div>
 </div>
 <div class="pdfButton">
-    <a type="button" class="pdf" (click)="pdf()">
-        <img src="../../assets/PDF.png" alt="PDF.img" height="64" width="64">
-    </a>
+    <pdf></pdf>
 </div>

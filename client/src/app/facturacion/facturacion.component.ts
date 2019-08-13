@@ -13,6 +13,7 @@ export class FacturacionComponent implements OnInit {
   detallefacturaForm: FormGroup
   facturaForm: FormGroup
   table_header: any
+  precio: any;
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
@@ -84,6 +85,13 @@ deleteDataTable = (value) => {
 }
 //PAGINA PRINCIPAL
 
+
+
+
+
+
+
+
 //MODAL NEW FACTURA
 nuevafecha = new Date()
 fecha_orden = this.nuevafecha.getDate() + "/" + (this.nuevafecha.getMonth() +1) + "/" + this.nuevafecha.getFullYear()
@@ -113,6 +121,15 @@ getDataClientes = () => {
 }
 //MODAL NEW FACTURA
 
+
+
+
+
+
+
+
+
+
 //MODAL DETALLE_FACTURA
 respuestaMateriales: any[]
 
@@ -121,6 +138,7 @@ getDataMateriales = () => {
   this.http.get<any>(environment.API_URL + `?tabla=${tabla}`)
   .subscribe(data => {
     this.respuestaMateriales = data.datos
+    this.precio = this.respuestaMateriales[0].precio
   })
 }
 

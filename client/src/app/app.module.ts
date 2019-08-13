@@ -18,6 +18,7 @@ import { AlbaranComponent } from './albaran/albaran.component';
 import { ResumenAlbaranComponent } from './albaran/resumen-albaran/resumen-albaran.component';
 import { ResumenFacturacionComponent } from './facturacion/resumen-facturacion/resumen-facturacion.component';
 import { NichoComponent } from './materiales/nicho/nicho.component';
+import { PdfComponent } from './pdf/pdf.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NichoComponent } from './materiales/nicho/nicho.component';
     AlbaranComponent,
     ResumenAlbaranComponent,
     ResumenFacturacionComponent,
-    NichoComponent
+    NichoComponent,
+    PdfComponent
   ],
   imports: [
     BrowserModule,
