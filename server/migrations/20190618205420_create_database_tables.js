@@ -90,7 +90,7 @@ exports.up = function(knex, Promise) {
     table.decimal('precio');
     table.decimal('descuento');
     table.integer('idmaterial').references('id').inTable('material');
-    table.integer('idfactura').references('id').inTable('factura');
+    table.integer('idfactura').references('id').inTable('factura').onDelete('CASCADE');;
   })
 };
 

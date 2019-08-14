@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵSWITCH_TEMPLATE_REF_FACTORY__POST_R3__ } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-facturacion',
   templateUrl: './facturacion.component.html',
@@ -13,18 +13,26 @@ export class FacturacionComponent implements OnInit {
   detallefacturaForm: FormGroup
   facturaForm: FormGroup
   table_header: any
+  respuestaClientes: any[]
+  idcliente: any;
+  idmaterial: number;
   precio: any;
+  total: number;
+  descuento: number;
+  cantidad: number;
+  carrito: any[] = [];
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
 
   ngOnInit() {
-    this.formularioFactura()
-    this.formularioDetalleFactura()
-
     this.getDataFactura()
     this.getDataClientes()
     this.getDataMateriales()
-
+    this.formularioFactura()
+    this.formularioDetalleFactura()
+    this.idcliente = 999;
+    this.idmaterial = 999;
+    this.precio = 0;
     this.table_header = [
       {
         id: 'N°',
@@ -46,12 +54,24 @@ export class FacturacionComponent implements OnInit {
 
   formularioDetalleFactura(){
     this.detallefacturaForm = this.formBuilder.group({
-      id:[''],
+      id:[this.idmaterial],
       cantidad:['',[Validators.required]],
-      precio:['',[Validators.required]],
+      precio:[this.precio,[Validators.required]],
       descuento:['',[Validators.required]],
       idmaterial:['',[Validators.required]],
       idfactura:['',[Validators.required]]
+    })
+  }
+
+  datosFactura (){
+    this.facturaForm.controls['idcliente'].setValue(this.idcliente)
+    this.respuestaMateriales.forEach(element =>{
+      if(element.id == this.idmaterial){
+        this.precio = element.precio
+        this.detallefacturaForm.controls['precio'].setValue(this.precio); 
+        this.detallefacturaForm.controls['idmaterial'].setValue(this.idmaterial);
+      }
+     
     })
   }
 
@@ -79,9 +99,41 @@ getDatabyID = (value) => {
 
 deleteDataTable = (value) => {
   let tabla = 'factura'
-  this.http.delete(environment.API_URL + `?tabla=${tabla}&&id=${value}`)
-  .subscribe( data => { })
-  window.location.reload()
+    Swal.fire({
+      type: 'warning',
+      title: '¿Estas seguro de que deseas eliminar la factura?',
+      showCancelButton: true,
+      confirmButtonText: 'Si, eliminalo!',
+      cancelButtonText: 'No, cancela!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.value) {
+        this.http.delete(environment.API_URL + `?tabla=${tabla}&&id=${value}`)
+        .subscribe( data => { 
+          Swal.fire(
+            'Eliminado!',
+            'La factura se elimino correctamente',
+            'success'
+          )
+          .then(result =>{
+            window.location.reload()
+          })
+          .catch(result =>{
+            console.log('no sirves loco mejor matate')
+          })
+        })
+      } 
+      else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+  })
 }
 //PAGINA PRINCIPAL
 
@@ -96,21 +148,6 @@ deleteDataTable = (value) => {
 nuevafecha = new Date()
 fecha_orden = this.nuevafecha.getDate() + "/" + (this.nuevafecha.getMonth() +1) + "/" + this.nuevafecha.getFullYear()
 
-postDataFactura = () => {
-  let total = this.facturaForm.get('total').value
-  let idcliente = this.facturaForm.get('idcliente').value
-  let returning
-
-  let tabla = 'factura'
-  let register = {tabla: tabla, datos: [{fecha: this.fecha_orden, total: total, idcliente: idcliente}]}
-  this.http.post(environment.API_URL, register)
-  .subscribe( data => {
-    returning = data
-  })
-  window.location.reload()
-}
-
-respuestaClientes: any[]
 
 getDataClientes = () => {
   let tabla = 'cliente'
@@ -119,9 +156,18 @@ getDataClientes = () => {
     this.respuestaClientes = data.datos
   })
 }
+
 //MODAL NEW FACTURA
 
 
+postDataFactura = () => {
+
+
+  
+
+  
+  window.location.reload()
+}
 
 
 
@@ -133,29 +179,51 @@ getDataClientes = () => {
 //MODAL DETALLE_FACTURA
 respuestaMateriales: any[]
 
+addProducto(){
+  this.carrito.push(this.detallefacturaForm.controls)
+  /*this.detallefacturaForm.controls['cantidad'].setValue('')
+  this.detallefacturaForm.controls['precio'].setValue('')
+  this.detallefacturaForm.controls['descuento'].setValue('')
+  this.detallefacturaForm.controls['idmaterial'].setValue('')*/
+  this.idmaterial = 999;
+  console.log(this.carrito)
+}
+
 getDataMateriales = () => {
   let tabla = 'material'
   this.http.get<any>(environment.API_URL + `?tabla=${tabla}`)
   .subscribe(data => {
     this.respuestaMateriales = data.datos
-    this.precio = this.respuestaMateriales[0].precio
   })
 }
 
 postDataDetalleFacturas = () => {
+
+  let idcliente = this.facturaForm.get('idcliente').value
   let cantidad = this.detallefacturaForm.get('cantidad').value
   let precio = this.detallefacturaForm.get('precio').value
   let descuento = this.detallefacturaForm.get('descuento').value
   let idmaterial = this.detallefacturaForm.get('idmaterial').value
-  let returning
+  let total = 0
+  let tabla = 'factura'
+  let register = {tabla: tabla, datos: [{fecha: this.fecha_orden, total: total, idcliente: idcliente}]}
+  this.http.post<any>(environment.API_URL, register)
+  .subscribe( data => {
+    let idFactura = data.datos[0];
+     console.log(idFactura)
 
-  let tabla = 'detalle_factura'
-  let register = {tabla: tabla, datos: [{descuento: descuento, cantidad: cantidad, precio: precio, idfactura: this.idFacturaVariable, idmaterial: idmaterial}]}
-  this.http.post(environment.API_URL, register)
-  .subscribe( data => { 
-    returning = data
+    tabla = 'detalle_factura'
+    let register = {tabla: tabla, datos: [{descuento: descuento, cantidad: cantidad, precio: precio, idfactura: idFactura, idmaterial: idmaterial}]}
+    this.http.post(environment.API_URL, register)
+    .subscribe( data => { 
+    console.log(data);
+    })
   })
-  window.location.reload()
+
+  
+ 
+console.log(JSON.stringify(register))
+  //window.location.reload()
 }
 //MODAL DETALLE_FACTURA
 }

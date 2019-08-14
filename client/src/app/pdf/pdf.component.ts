@@ -31,7 +31,6 @@ export class PdfComponent implements OnInit {
   material: any;
   precioMaterial
   cantidad: any;
-  tabla: autoTable;
 
   constructor(private http:HttpClient) { }
 

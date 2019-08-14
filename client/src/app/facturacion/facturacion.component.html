@@ -31,9 +31,9 @@
                         <td>{{ item.fecha }}</td>
                         <td>{{ item.total }}</td>
                         <td>
-                            <a type="button" onclick="document.getElementById('id05').style.display='block'" (click)="getDatabyID(item.id)">
+                            <!--<a type="button" onclick="document.getElementById('id05').style.display='block'" (click)="getDatabyID(item.id)">
                                 <img src="../../assets/editar.png" alt="edit-img" height="27" width="27">
-                            </a>
+                            </a>-->
                             <a type="button" href="/resumen_facturacion" (click)="getDatabyID(item.id)">
                                 <img src="../../assets/details.ico" alt="details-img" height="27" width="27">
                             </a>
@@ -64,50 +64,24 @@
 
             <div>
                 <h1>Nuevo Factura</h1>
-                <form [formGroup]="facturaForm" autocomplete="off">
-                    <strong>Cliente</strong><br>
-                    <select formControlName="idcliente">
-                        <option *ngFor="let item of respuestaClientes" value={{item.id}}>{{item.apellido}} {{item.nombre}}</option>
-                    </select>
-                    <div>
-                        <span class="errors" *ngIf="facturaForm.controls['idcliente'].errors?.required">Obligatorio</span>
-                    </div><br>
-
-                    <strong>TOTAL</strong><br>
-                    <input formControlName="total">
-                    <div>
-                        <span class="errors" *ngIf="facturaForm.controls['total'].errors?.required"> Obligatorio </span>
-                    </div><br><br>
-
-                    <a type="button" (click)="postDataFactura()">Guardar</a>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- MODAL FACTURACIÓN -->
-
-<!-- MODAL DETALLE_FACTURA -->
-<div>
-    <div id="id05" class="w3-modal">
-        <div class="w3-modal-content">
-            <header>
-                <span onclick="document.getElementById('id05').style.display='none'" class="w3-display-topright">
-                    <img src="../../assets/close-img.png" alt="edit-img" height="18" width="18">
-                </span>
-            </header>
-
-            <div>
-                <h1>Detalle de la Factura</h1>
+                <strong>Cliente</strong><br>
+                <select (change)="datosFactura()" [(ngModel)]='idcliente'>
+                    <option value="999">Clientes</option>
+                    <option *ngFor="let item of respuestaClientes" value={{item.id}}>{{item.apellido}} {{item.nombre}}</option>
+                </select>
+                <div>
+                    <span class="errors" *ngIf="facturaForm.controls['idcliente'].errors?.required">Obligatorio</span>
+                </div><br>
+                <strong>MATERIAL</strong><br>
+                <select [(ngModel)]="idmaterial" (change)="datosFactura()">
+                    <option value="999">Materiales</option>
+                    <option *ngFor="let item of respuestaMateriales" value={{item.id}}>{{item.nombre}}</option>
+                </select>
+                <div>
+                    <span class="errors" *ngIf="detallefacturaForm.controls['idmaterial'].errors?.required">Obligatorio</span>
+                </div><br>
+            
                 <form [formGroup]="detallefacturaForm" autocomplete="off">
-                    <strong>MATERIAL</strong><br>
-                    <select formControlName="idmaterial">
-                        <option *ngFor="let item of respuestaMateriales" value={{item.id}}>{{item.nombre}}</option>
-                    </select>
-                    <div>
-                        <span class="errors" *ngIf="detallefacturaForm.controls['idmaterial'].errors?.required">Obligatorio</span>
-                    </div><br>
-
                     <strong>DESCUENTO</strong><br>
                     <input formControlName="descuento">
                     <div>
@@ -120,13 +94,13 @@
                         <span class="errors" *ngIf="detallefacturaForm.controls['cantidad'].errors?.required"> Obligatorio </span>
                     </div><br>
 
-                    <strong>PRECIO</strong><br>
-                    <input formControlName="precio">
-                    <label>{{precio}}</label>
-                    <div>
-                        <span class="errors" *ngIf="detallefacturaForm.controls['precio'].errors?.required"> Obligatorio </span>
-                    </div><br><br>
-
+                    <strong>PRECIO</strong><br> 
+                    <input type="number" placeholder="{{precio}}" disabled>   <a type="button" (click)="addProducto()">Más</a>
+                   <br>
+                   <br>
+                    <strong>TOTAL</strong><br>
+                    <input [(ngModel)]="total">
+                  
                     <a type="button" (click)="postDataDetalleFacturas()">
                         Guardar
                     </a>
@@ -135,6 +109,9 @@
         </div>
     </div>
 </div>
+<!-- MODAL FACTURACIÓN -->
+
+<!-- MODAL DETALLE_FACTURA -->
 <div class="pdfButton">
     <pdf></pdf>
 </div>
